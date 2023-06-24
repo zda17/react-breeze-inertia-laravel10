@@ -1,66 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+(React + Tailwind) && (Inertia + Laravel) Starter Kit
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## GETTING STARTED
 
-## About Laravel
+Clone this repo and then:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```bash
+touch .env
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Install Composer (if you've worked with Laravel before, skip this step)
+Paste this in your terminal:
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" <br>
+php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') {     echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+```
+Run the following in your terminal to move composer into your $PATH
+```bash
+sudo mv composer.phar /usr/local/bin/composer
+```
+If you run into any trouble, you can go here and read more: https://getcomposer.org/download/
 
-## Learning Laravel
+### Install NPM packages
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+npm install
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Install composer packages
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+composer install
+```
 
-## Laravel Sponsors
+### Install Sail (Laravel's built-in Docker config
+```bash
+php artisan sail:install
+```
+then type 0 for msyql, press enter <br>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+then:
+```bash
+php artisan key:generate
+```
 
-### Premium Partners
+then just to double check run:
+```bash
+composer update
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Add sail to your $path (so you can just use 'sail' in future terminal commands):
+```bash
+alias sail='bash vendor/bin/sail'
+```
+If you get a "sail command not found" then just re-run this anytime.
 
-## Contributing
+## Open Docker Destkop
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+If you don't have Docker Desktop, you can download it here: https://www.docker.com/products/docker-desktop
 
-## Code of Conduct
+Once it's open, run this in your terminal:
+```bash
+sail up
+```
+This will start the docker container(s)( If you get a "sail command not found" then you can run -- otherwise skip to the next step): 
+```bash
+./vendor/bin/sail up
+``` 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+If you run into any trouble, the Sail documentation is here: https://laravel.com/docs/8.x/sail#introduction
 
-## Security Vulnerabilities
+<br>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Open a new tab in the terminal and run:
 
-## License
+```bash
+sail artisan migrate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Or if you're still getting the "sail command not found", run this:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+For a list of commands you can run, run:
+```bash
+./vendor/bin/sail artisan
+```
+
+Migrations need to be run using 'sail' instead of 'php' so that they are run inside the docker container
+
+Now run:
+
+```bash
+npm run dev
+```
+## Launch 🚀
+Main page is here:
+```bash
+localhost
+```
+
+<br>
+You'll need a DB client. I like to use TablePlus. <br>
+You can download it here: https://tableplus.com/. <br>
+<br>
+Once you have that downloaded, open it up and click "create a new connection". <br>
+Your info should look something like the image below (click "Test" for the boxes to turn green), and then click "Connect":
+
+<img width="504" alt="Screen Shot 2021-05-19 at 10 04 43 PM" src="https://user-images.githubusercontent.com/52245667/118920263-b2bd8900-b8fb-11eb-9db1-8763a66f0d8f.png">
+
+If you have trouble connecting to DB, see: https://laracasts.com/discuss/channels/servers/laravel-sail-no-dbdb-user-created
