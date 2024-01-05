@@ -2,11 +2,15 @@
 
 ## GETTING STARTED
 
-Clone this repo and then:
+Clone this repo and then change .env.example to just .env
+
+Or, run
 
 ```bash
 touch .env
 ```
+
+and copy the contents of .env.example into your new .env file.
 
 <br>
 
